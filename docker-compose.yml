@@ -1,0 +1,35 @@
+services:
+  mysql-server:
+    image: mysql:8.0
+    container_name: glpi-db
+    restart: always  
+    command:
+      - mysqld
+      - --port=3306  
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_bin
+      - --skip-character-set-client-handshake
+      - --default-authentication-plugin=mysql_native_password
+      - --max_connections=2000
+      - --mysqlx_max_connections=2000   
+    volumes:
+      - ./mysql:/var/lib/mysql:rw
+    environment:
+      - MYSQL_DATABASE=glpi
+      - MYSQL_USER=glpi
+      - MYSQL_PASSWORD=glpi
+      - MYSQL_ROOT_PASSWORD=root_pwd
+
+  glpi:
+    image: jackywn/glpi:latest
+    container_name : glpi-www
+    hostname: glpi-www
+    ports:
+      - "8000:80"
+    volumes:
+      - ./glpi:/app 
+    environment:
+      - VERSION_GLPI=10.0.2
+      - PHP_DATE_TIMEZONE=Asia/Shanghai
+      - PHP_POST_MAX_SIZE=100M      
+    restart: always
