@@ -30,6 +30,6 @@ services:
     volumes:
       - ./glpi:/app 
     environment:
-      - VERSION_GLPI=10.0.2
+      #- VERSION_GLPI=10.0.3
       - PHP_DATE_TIMEZONE=Asia/Shanghai
       - PHP_POST_MAX_SIZE=100M 
