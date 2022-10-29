@@ -19,7 +19,7 @@ docker run \
 --link glpi-db:glpi-db \
 -v /data/glpi/www:/app \
 -p 8000:80 \
--e VERSION_GLPI="9.5.8" \
+-e VERSION_GLPI="9.5.9" \
 -d jackywn/glpi
 ```
 
