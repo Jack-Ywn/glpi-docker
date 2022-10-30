@@ -3,7 +3,8 @@ services:
   mysql-server:
     image: mysql:8.0
     container_name: glpi-db
-    restart: always  
+    restart: always
+    #network_mode: host
     command:
       - mysqld
       - --port=3306  
@@ -24,7 +25,8 @@ services:
   application:
     image: jackywn/glpi:latest
     container_name : glpi-www
-    restart: always    
+    restart: always
+    #network_mode: host
     ports:
       - "8000:80"
     volumes:
