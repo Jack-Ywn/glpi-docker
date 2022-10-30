@@ -30,7 +30,8 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./glpi:/app 
+      - ./glpi:/app
+      - /etc/hosts:/etc/hosts
     environment:
       #- VERSION_GLPI=10.0.3
       - PHP_DATE_TIMEZONE=Asia/Shanghai
