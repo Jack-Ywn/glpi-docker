@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  mysql-server:
+  glpi-db:
     image: mysql:8.0
     container_name: glpi-db
     restart: always
@@ -22,7 +22,7 @@ services:
       - MYSQL_PASSWORD=glpi
       - MYSQL_ROOT_PASSWORD=root_pwd
 
-  application:
+  glpi-www:
     image: jackywn/glpi:latest
     container_name : glpi-www
     restart: always
@@ -34,5 +34,6 @@ services:
       - /etc/hosts:/etc/hosts
     environment:
       #- VERSION_GLPI=10.0.3
-      - PHP_DATE_TIMEZONE=Asia/Shanghai
-      - PHP_POST_MAX_SIZE=100M 
+      - PHP_POST_MAX_SIZE=100M
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAX_EXECUTION_TIME=600
