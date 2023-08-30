@@ -12,8 +12,8 @@ services:
       - --collation-server=utf8mb4_bin
       - --skip-character-set-client-handshake
       - --default-authentication-plugin=mysql_native_password
-      - --max_connections=2000
-      - --mysqlx_max_connections=2000   
+      - --max_connections=200
+      - --mysqlx_max_connections=200   
     volumes:
       - ./mysql:/var/lib/mysql:rw
     environment:
@@ -33,7 +33,9 @@ services:
       - ./glpi:/app
       - /etc/hosts:/etc/hosts
     environment:
-      #- VERSION_GLPI=10.0.3
-      - PHP_POST_MAX_SIZE=100M
+      - VERSION_GLPI=10.0.9
+      - PHP_DATE_TIMEZONE=Asia/Shanghai
       - PHP_MEMORY_LIMIT=512M
       - PHP_MAX_EXECUTION_TIME=600
+      - PHP_POST_MAX_SIZE=100M
+      - PHP_UPLOAD_MAX_FILESIZE=50M
