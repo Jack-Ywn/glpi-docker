@@ -1,5 +1,5 @@
 #基础镜像
-FROM webdevops/php-apache:7.4-alpine
+FROM webdevops/php-apache:8.2-alpine
 
 #设置工作目录
 WORKDIR /app
